@@ -12,7 +12,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Install Dependencies
+        run: npm install
+
       - name: remove existing data
         run: npx ts-node remove_db.ts mongodb://127.0.0.1:27017/my_library_db
+
       - name: insert new data
         run: npx ts-node insert_sample_data.ts mongodb://127.0.0.1:27017/my_library_db
