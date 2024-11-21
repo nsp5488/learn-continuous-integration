@@ -44,8 +44,11 @@ First setup your machine or your teammate's machine to be the self hosted runner
 Answer the following questions:
 
 1. What does the __runs-on__ string  
+    runs-on determines what platform should be used for running the integration tests. In this case, we're using runs-on to execute on a self hosted runner, but it could instead be a tag for a virtual machine or Docker container
 2. In `main.yml`, on which branch do the jest tests run when a push to main branch is made?
+    The jest tests run on a temporary branch, called a pending head, which is a copy of the main branch with the newly pushed code commited to it.
 3. In `main.yml`, on which branch do the jest tests run when a pull request is submitted to the deploy branch?
+    The jest tests run on a temporary branch, called a pending head, which is a copy of the _deploy_ branch with the newly pushed code commited to it.
 
 Next, create a new workflow yml file that captures the following continuous integration requirement:
 
